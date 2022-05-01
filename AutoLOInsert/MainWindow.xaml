@@ -1,0 +1,149 @@
+﻿<Window x:Class="AutoLOInsert.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AutoLOInsert"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="720" Width="1280" Icon="Project.ico">
+    <Grid Height="550" Width="1100">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100*"/>
+            <ColumnDefinition Width="175*"/>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="100*"/>
+            <ColumnDefinition Width="175*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="120*"/>
+            <RowDefinition Height="120*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Column="1" Grid.Row="0">
+
+            <Label x:Name="CategoryBlock" HorizontalAlignment="Center" Margin="8">
+                <TextBlock TextWrapping="WrapWithOverflow" FontWeight="Bold" FontSize="16">
+                    Add New Learning Object
+                </TextBlock>
+            </Label>
+
+        </StackPanel>
+        <StackPanel Grid.Column="4" Grid.Row="0">
+
+            <Label x:Name="CategoryBlock2" HorizontalAlignment="Center" Margin="8">
+                <TextBlock TextWrapping="WrapWithOverflow" FontWeight="Bold" FontSize="16">
+                    Batch Zip Multiple Files
+                </TextBlock>
+            </Label>
+
+        </StackPanel>
+        <StackPanel Grid.Column="0" Grid.Row="1">
+
+            <Label x:Name="HelpLabel" HorizontalAlignment="Center" Margin="8">
+                <TextBlock TextWrapping="WrapWithOverflow">
+                    Folder Path
+                </TextBlock>
+            </Label>
+            <Label x:Name="CompName" HorizontalAlignment="Center" Margin="2">
+                <TextBlock TextWrapping="WrapWithOverflow">
+                    Name
+                </TextBlock>
+            </Label>
+            <Label x:Name="CompCode" HorizontalAlignment="Center" Margin="7">
+                <TextBlock TextWrapping="WrapWithOverflow">
+                    Code
+                </TextBlock>
+            </Label>
+
+        </StackPanel>
+        <StackPanel Grid.Column="1" Grid.Row="1">
+            <TextBox x:Name="FolderPathLO" Width="300" Margin="10" MouseDown="SelectLOFolderEvent" MouseDoubleClick="SelectLOFolderEvent"></TextBox>
+            <TextBox x:Name="CompetenceName" Width="300" Margin="10"></TextBox>
+            <TextBox x:Name="CompetenceCode" Width="300" Margin="10"></TextBox>
+            <Button
+                x:Name="InsertLO"
+                Width="200px"
+                Height="40px"
+                Cursor="Hand"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Click="MainClickButton"
+                Margin="10"
+                Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Background="#FFDADADA">
+                InsertLearningObject
+            </Button>
+            <ProgressBar Height="50" Minimum="0" Maximum="100" Name="AddLOProgressBar" />
+            
+        </StackPanel>
+        <StackPanel Grid.Column="1" Grid.Row="2">
+            <ComboBox Margin="0,20,0,0"  Width="250" Name="ComboBoxSelectType" HorizontalAlignment="Left" SelectionChanged="ComboBoxSelectType_SelectionChanged">
+                <ComboBoxItem IsSelected="True">Insert Learing Object</ComboBoxItem>
+                <ComboBoxItem>Insert Quiz</ComboBoxItem>
+                <ComboBoxItem>Insert Evaluation</ComboBoxItem>
+            </ComboBox>
+            <TextBox x:Name="NumberOfInstance" Width="25" Margin="0,10,0,0" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5" Text="0">
+                <TextBox.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform X="-6" Y="-28"/>
+                    </TransformGroup>
+                </TextBox.RenderTransform>
+            </TextBox>
+            <CheckBox Content="EVAL" x:Name="AddEval" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5">
+                <CheckBox.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform X="-40" Y="-44"/>
+                    </TransformGroup>
+                </CheckBox.RenderTransform>
+            </CheckBox>
+            <CheckBox Content="Dev" x:Name="DevTemp" HorizontalAlignment="Left" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Bottom" Background="#FF898585">
+                <CheckBox.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform Y="153" X="-4"/>
+                    </TransformGroup>
+                </CheckBox.RenderTransform>
+            </CheckBox>
+        </StackPanel>
+        <StackPanel Grid.Column="0" Grid.Row="2">
+            <Label HorizontalAlignment="Center" Margin="7,18,7,7">
+                <TextBlock TextWrapping="WrapWithOverflow">
+                    Select Type
+                </TextBlock>
+            </Label>
+        </StackPanel>
+        <StackPanel Grid.Column="3" Grid.Row="1">
+
+            <Label x:Name="ZipFiles" HorizontalAlignment="Center" Margin="7">
+                <TextBlock TextWrapping="WrapWithOverflow">
+                    Batch Zip
+                </TextBlock>
+            </Label>
+        </StackPanel>
+        <StackPanel Grid.Column="4" Grid.Row="1">
+            <TextBox x:Name="FolderPathZip" Width="300" Margin="10" MouseDoubleClick="SelectLOZipFolderEvent"></TextBox>
+            <Button
+                x:Name="BatchZipFiles"
+                Width="200px"
+                Height="40px"
+                Cursor="Hand"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Margin="10"
+                Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Background="#FFDADADA" Click="BatchZipFiles_Click">
+                BatchZipFiles
+            </Button>
+            <ProgressBar Height="50" Minimum="0" Maximum="100" Name="ZipFilesProgressBar" />
+        </StackPanel>
+        <GridSplitter Grid.Column="2" Grid.Row="0" Width="5" HorizontalAlignment="Stretch" />
+        <GridSplitter Grid.Column="2" Grid.Row="1" Width="5" HorizontalAlignment="Stretch" />
+        <GridSplitter Grid.Column="2" Grid.Row="2" Width="5" HorizontalAlignment="Stretch" />
+    </Grid>
+</Window>
